@@ -1,11 +1,11 @@
-# Project PROJECT_NAME
+# Project PROJECT_OWENBECK
 
 [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet)
 
 ### Student Info
 
--   Name: YOUR NAME
--   Section: ##
+-   Name: OWEN BECK
+-   Section: ##3
 
 ## Game Design
 
