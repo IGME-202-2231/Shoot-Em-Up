@@ -13,10 +13,5 @@ public class InputController : MonoBehaviour
         movementController.SetDirection(context.ReadValue<Vector2>());
     }
 
-    /*  if (Input.GetMouseButtonDown(0))    //Detects left click
-        {
-            collisionMode = CollisionMode.Circle;
-        } */
-
 
 }
