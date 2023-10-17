@@ -5,9 +5,6 @@ using UnityEngine;
 public class SpriteInfo : MonoBehaviour
 {
     [SerializeField]
-    public float radius = 1.0f;
-
-    [SerializeField]
     SpriteRenderer sRenderer;
 
     [SerializeField]
@@ -53,6 +50,6 @@ public class SpriteInfo : MonoBehaviour
         Gizmos.color = Color.green;
 
         //Gizmos.DrawWireSphere(transform.position, radius);
-        //Gizmos.DrawWireCube(transform.position, rectSize);
+        Gizmos.DrawWireCube(transform.position, rectSize);
     }
 }

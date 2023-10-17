@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8591556209387623464}
   - component: {fileID: 1782166304060803158}
   - component: {fileID: 6228513584513399425}
+  - component: {fileID: 6988284241936541159}
   m_Layer: 0
   m_Name: RedBullet
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8591556209387623464
 SpriteRenderer:
@@ -94,7 +95,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2674558572285510170}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -125,3 +126,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c3ac28a2a774c4696cb2e556520a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6988284241936541159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2674558572285510170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b5f158dd7e74f448cd899ebbd72d16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1
+  sRenderer: {fileID: 8591556209387623464}
+  rectSize: {x: 0.2, y: 0.2}
+  useRendererBounds: 1

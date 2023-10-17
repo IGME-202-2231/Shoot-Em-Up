@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2316087450730887604}
   - component: {fileID: 30457575873689998}
   - component: {fileID: 6968205465962816551}
+  - component: {fileID: 1243417364074922797}
   m_Layer: 0
   m_Name: BlueBullet
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2316087450730887604
 SpriteRenderer:
@@ -125,3 +126,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c3ac28a2a774c4696cb2e556520a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1243417364074922797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3148272435343434990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b5f158dd7e74f448cd899ebbd72d16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1
+  sRenderer: {fileID: 2316087450730887604}
+  rectSize: {x: 0.3, y: 0.55}
+  useRendererBounds: 1

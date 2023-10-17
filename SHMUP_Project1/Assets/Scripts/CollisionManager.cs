@@ -63,4 +63,16 @@ public class CollisionManager : MonoBehaviour
             }
         }
     }
+
+    //Add collidables method
+    public void AddCollidable(SpriteInfo collidable)
+    {
+        collidables.Add(collidable);
+    }
+
+    //Remove collidable method
+    public void RemoveCollidable(SpriteInfo collidable)
+    {
+        collidables.Remove(collidable);
+    }
 }

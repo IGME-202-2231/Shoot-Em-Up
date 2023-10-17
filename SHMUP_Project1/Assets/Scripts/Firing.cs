@@ -5,9 +5,17 @@ using UnityEngine.InputSystem;
 
 public class Firing : MonoBehaviour
 {
-    public GameObject bulletPrefab;
-    public Transform firePoint;
-    public float bulletSpeed = 10f;
+    [SerializeField] 
+    GameObject bulletPrefab;
+
+    [SerializeField]
+    Transform firePoint;
+
+    [SerializeField]
+    float bulletSpeed = 10f;
+
+    [SerializeField]
+    private CollisionManager collisionManager; // Reference to the CollisionManager.
 
     void Update()
     {
@@ -22,5 +30,18 @@ public class Firing : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.velocity = firePoint.up * bulletSpeed;
+
+        SpriteInfo bulletInfo = bullet.GetComponent<SpriteInfo>();
+        Bullet bullet1 = bullet.GetComponent<Bullet>();
+
+        if (bulletInfo != null && collisionManager != null)
+        {
+            collisionManager.AddCollidable(bulletInfo);
+        }
+        if (bullet1.IsOnScreen() == false)
+        {
+            collisionManager.RemoveCollidable(bulletInfo);
+        }
     }
+    
 }
