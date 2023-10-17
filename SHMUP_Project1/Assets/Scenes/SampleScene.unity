@@ -224,8 +224,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f6711eef695ae46be1b74ebf9ffd10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 3090821864184656212, guid: f92c0129179c26a4985c062eff004fc1, type: 3}
-  timer: 0
+  enemy: {fileID: 0}
+  spriteInfo: {fileID: 4817161656663330134, guid: f92c0129179c26a4985c062eff004fc1, type: 3}
+  collisionManager: {fileID: 527134333}
   enemies: []
 --- !u!4 &420548524
 Transform:
