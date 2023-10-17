@@ -126,6 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c3ac28a2a774c4696cb2e556520a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletInfo: {fileID: 1243417364074922797}
+  collisionManager: {fileID: 0}
 --- !u!114 &1243417364074922797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b5f158dd7e74f448cd899ebbd72d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1
   sRenderer: {fileID: 2316087450730887604}
   rectSize: {x: 0.3, y: 0.55}
   useRendererBounds: 1

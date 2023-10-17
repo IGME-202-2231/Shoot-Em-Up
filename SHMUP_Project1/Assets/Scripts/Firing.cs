@@ -38,10 +38,10 @@ public class Firing : MonoBehaviour
         {
             collisionManager.AddCollidable(bulletInfo);
         }
-        if (bullet1.IsOnScreen() == false)
-        {
-            collisionManager.RemoveCollidable(bulletInfo);
-        }
+        //if (!bullet1.IsOnScreen())
+        //{
+        //    collisionManager.RemoveCollidable(bulletInfo);
+        //}
     }
     
 }
