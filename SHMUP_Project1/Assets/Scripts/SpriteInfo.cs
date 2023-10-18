@@ -15,6 +15,13 @@ public class SpriteInfo : MonoBehaviour
     [SerializeField]
     bool useRendererBounds = true;
 
+    enum sprites
+    {
+        player,
+        bullet,
+        enemy
+    }
+
     public Vector2 RectMin
     {
         get { return (Vector2)transform.position - (rectSize / 2); }

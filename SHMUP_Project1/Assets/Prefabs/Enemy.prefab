@@ -114,3 +114,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  collisionManager: {fileID: 0}
+  projectilePrefab: {fileID: 2674558572285510170, guid: 597187e9f8561cd458a97ad51c9ac478, type: 3}
+  shootInterval: 2
+  firePoint: {fileID: 7850595518326803087}
+  bulletSpeed: 10

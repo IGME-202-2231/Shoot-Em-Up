@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8591556209387623464
 SpriteRenderer:
@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c3ac28a2a774c4696cb2e556520a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletInfo: {fileID: 6988284241936541159}
 --- !u!114 &6988284241936541159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b5f158dd7e74f448cd899ebbd72d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1
   sRenderer: {fileID: 8591556209387623464}
   rectSize: {x: 0.2, y: 0.2}
   useRendererBounds: 1

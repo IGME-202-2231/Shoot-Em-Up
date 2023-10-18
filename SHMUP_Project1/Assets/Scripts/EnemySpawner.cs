@@ -22,15 +22,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < spawnNum; i++)
-        {
-            spawn.x = Random.Range(11, 15);
-            spawn.y = Random.Range(-4, 4);
-            enemyPrefab = Instantiate(enemyPrefab, spawn, Quaternion.identity);
-            enemies.Add(enemyPrefab);
-            sprite = enemies[i].GetComponent<SpriteInfo>();
-            collisionManager.AddCollidable(sprite);
-        }
+        spawn.y = 5;
+        SpawnEnemy();
     }
 
     private void Update()
@@ -45,8 +38,8 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int i = 0; i < spawnNum; i++)
         {
-            Vector3 spawnPosition = new Vector3(Random.Range(11, 15), Random.Range(-4, 4), 0);
-            GameObject newEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            Vector3 spawnPosition = new Vector3(Random.Range(-9, 9), spawn.y, 0);
+            GameObject newEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.Euler(0,0,180));
             enemies.Add(newEnemy);
             SpriteInfo sprite = newEnemy.GetComponent<SpriteInfo>();
             collisionManager.AddCollidable(sprite);
