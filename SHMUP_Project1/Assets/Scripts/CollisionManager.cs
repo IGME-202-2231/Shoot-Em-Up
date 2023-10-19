@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static SpriteInfo;
 
 public class CollisionManager : MonoBehaviour
 {
     //Create List of collidables
     [SerializeField]
     List<SpriteInfo> collidables = new List<SpriteInfo>();
- 
+
+    //Create SpriteTypes object
+    SpriteTypes spriteType;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +59,7 @@ public class CollisionManager : MonoBehaviour
 
 
                 //if isColliding is true, mark each sprite as colliding
+                //**********************ADD COLLISION LOGIC FOR EACH SPRITETYPE****************************************************
                 if(isColliding)
                 {
                     spriteA.IsColliding = isColliding;

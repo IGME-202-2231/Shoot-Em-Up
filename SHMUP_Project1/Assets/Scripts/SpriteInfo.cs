@@ -15,12 +15,15 @@ public class SpriteInfo : MonoBehaviour
     [SerializeField]
     bool useRendererBounds = true;
 
-    enum sprites
+    public enum SpriteTypes    //Enums of sprite types
     {
         player,
         bullet,
         enemy
     }
+
+    //Create SpriteTypes object
+    SpriteTypes spriteType;
 
     public Vector2 RectMin
     {
