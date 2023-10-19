@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using static SpriteInfo;
 
 public class CollisionManager : MonoBehaviour
@@ -15,6 +16,11 @@ public class CollisionManager : MonoBehaviour
     SpriteTypes spriteType;
     EnemySpawner spawner;
 
+    //Create reference to Lives Class
+    [SerializeField]
+    Lives lives;
+
+    //Create reference to spawner
     public void SetEnemySpawner(EnemySpawner spawner)
     {
         this.spawner = spawner;
@@ -30,6 +36,11 @@ public class CollisionManager : MonoBehaviour
     void Update()
     {
         DetectCollisions();
+        if(lives.remainingLives < 1) //if lives < 0 game ends
+        {
+            // Load the Game Over scene
+            SceneManager.LoadScene("GameOver");
+        }
     }
 
 
@@ -79,6 +90,7 @@ public class CollisionManager : MonoBehaviour
                     if (spriteA.spriteType == SpriteTypes.pBullet)
                     {
                         spawner.RemoveRedEnemy(spriteB);///********************************FIX
+                        spawner.RemovePurpEnemy(spriteB);
                         RemoveCollidable(spriteB);
                         Destroy(spriteB.gameObject);
                         RemoveCollidable(spriteA);
@@ -86,13 +98,38 @@ public class CollisionManager : MonoBehaviour
                     }
                     else if (spriteB.spriteType == SpriteTypes.pBullet)
                     {
-                        spawner.RemoveRedEnemy(spriteA);///*********************************************FIX
+                        spawner.RemoveRedEnemy(spriteA);///********************************FIX
+                        spawner.RemovePurpEnemy(spriteA);
                         RemoveCollidable(spriteA);
                         Destroy(spriteA.gameObject);
                         RemoveCollidable(spriteB);
                         Destroy(spriteB.gameObject);
                     }
                 }
+                //If player collides with eBullet, remove a life
+                if ((spriteA.spriteType == SpriteTypes.eBullet && spriteB.spriteType == SpriteTypes.player) || (spriteA.spriteType == SpriteTypes.player && spriteB.spriteType == SpriteTypes.eBullet) && isColliding)
+                {
+                    if (spriteA.spriteType == SpriteTypes.eBullet)
+                    {
+                        //Remove bullet
+                        RemoveCollidable(spriteA);
+                        Destroy(spriteA.gameObject);
+
+                        //Remove a life
+                        lives.LoseLife();
+                    }
+                    else if (spriteB.spriteType == SpriteTypes.eBullet)
+                    {
+                        //Remove bullet
+                        RemoveCollidable(spriteB);
+                        Destroy(spriteB.gameObject);
+
+                        //Remove a life
+                        lives.LoseLife();
+
+                    }
+                }
+
             }
         }
     }
