@@ -101,6 +101,7 @@ MonoBehaviour:
   sRenderer: {fileID: 9027893674633492478}
   rectSize: {x: 0.8, y: 0.8}
   useRendererBounds: 1
+  spriteType: 3
 --- !u!114 &3451233395486162957
 MonoBehaviour:
   m_ObjectHideFlags: 0

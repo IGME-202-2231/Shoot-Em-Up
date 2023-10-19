@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SpriteTypes    //Enums of sprite types
+{
+    player,
+    pBullet,
+    eBullet,
+    enemy
+}
+
 public class SpriteInfo : MonoBehaviour
 {
     [SerializeField]
@@ -15,15 +23,8 @@ public class SpriteInfo : MonoBehaviour
     [SerializeField]
     bool useRendererBounds = true;
 
-    public enum SpriteTypes    //Enums of sprite types
-    {
-        player,
-        bullet,
-        enemy
-    }
-
     //Create SpriteTypes object
-    SpriteTypes spriteType;
+    public SpriteTypes spriteType;
 
     public Vector2 RectMin
     {

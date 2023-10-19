@@ -142,3 +142,4 @@ MonoBehaviour:
   sRenderer: {fileID: 8591556209387623464}
   rectSize: {x: 0.2, y: 0.2}
   useRendererBounds: 1
+  spriteType: 2

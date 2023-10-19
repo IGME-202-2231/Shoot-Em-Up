@@ -100,7 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sRenderer: {fileID: 2134766467381894646}
   rectSize: {x: 0.8, y: 0.8}
-  useRendererBounds: 1
+  useRendererBounds: 0
+  spriteType: 3
 --- !u!114 &1920503456831288805
 MonoBehaviour:
   m_ObjectHideFlags: 0

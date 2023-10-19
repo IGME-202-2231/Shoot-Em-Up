@@ -11,12 +11,19 @@ public class CollisionManager : MonoBehaviour
     List<SpriteInfo> collidables = new List<SpriteInfo>();
 
     //Create SpriteTypes object
+    SpriteInfo sprite;
     SpriteTypes spriteType;
+    EnemySpawner spawner;
+
+    public void SetEnemySpawner(EnemySpawner spawner)
+    {
+        this.spawner = spawner;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        collidables[0].spriteType = SpriteTypes.player;
     }
 
     // Update is called once per frame
@@ -41,7 +48,7 @@ public class CollisionManager : MonoBehaviour
         //Set all collidables isColliding to false
         foreach (SpriteInfo collidable in collidables)
         {
-            collidable.GetComponent<SpriteInfo>().IsColliding = false;
+            collidable.IsColliding = false;
         }
 
         //use nested for loops to loop through my list (collidables)
@@ -50,8 +57,8 @@ public class CollisionManager : MonoBehaviour
             //Check each sprite against eacchother for collisions
             for (int j = i + 1; j < collidables.Count; j++)
             {
-                SpriteInfo spriteA = collidables[i].GetComponent<SpriteInfo>();
-                SpriteInfo spriteB = collidables[j].GetComponent<SpriteInfo>();
+                SpriteInfo spriteA = collidables[i];
+                SpriteInfo spriteB = collidables[j];
 
                 bool isColliding = false;
 
@@ -60,10 +67,31 @@ public class CollisionManager : MonoBehaviour
 
                 //if isColliding is true, mark each sprite as colliding
                 //**********************ADD COLLISION LOGIC FOR EACH SPRITETYPE****************************************************
-                if(isColliding)
+                if (isColliding)
                 {
                     spriteA.IsColliding = isColliding;
                     spriteB.IsColliding = isColliding;
+                }
+
+                //if pBullet collides with enemy type, remove both sprites
+                if ((spriteA.spriteType == SpriteTypes.pBullet && spriteB.spriteType == SpriteTypes.enemy) || (spriteA.spriteType == SpriteTypes.enemy && spriteB.spriteType == SpriteTypes.pBullet) && isColliding)
+                {
+                    if (spriteA.spriteType == SpriteTypes.pBullet)
+                    {
+                        spawner.RemoveRedEnemy(spriteB);
+                        RemoveCollidable(spriteB);
+                        Destroy(spriteB.gameObject);
+                        RemoveCollidable(spriteA);
+                        Destroy(spriteA.gameObject);
+                    }
+                    else if (spriteB.spriteType == SpriteTypes.pBullet)
+                    {
+                        spawner.RemoveRedEnemy(spriteA);
+                        RemoveCollidable(spriteA);
+                        Destroy(spriteA.gameObject);
+                        RemoveCollidable(spriteB);
+                        Destroy(spriteB.gameObject);
+                    }
                 }
             }
         }

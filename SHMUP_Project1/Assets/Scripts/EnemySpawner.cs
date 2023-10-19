@@ -19,14 +19,12 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     CollisionManager collisionManager;
 
-    [SerializeField]
-    List<GameObject> redEnemies = new List<GameObject>();
-
-    [SerializeField]
-    List<GameObject> purpEnemies = new List<GameObject>();
+    //public List<GameObject> redEnemies = new List<GameObject>();
+    public List<SpriteInfo> redEnemies = new List<SpriteInfo>();
+    public List<SpriteInfo> purpEnemies = new List<SpriteInfo>();
 
     int redSpawnNum = 3;
-    int purpSpawnNum = 1;
+    int purpSpawnNum = 2;
     Vector3 redSpawn;
     Vector3 purpSpawn;
 
@@ -35,15 +33,19 @@ public class EnemySpawner : MonoBehaviour
         redSpawn.y = 5;
         purpSpawn.x = 10.5f;
         SpawnRedEnemy();
+        SpawnPurpEnemy();
+
+        // Set the reference to the CollisionManager
+        collisionManager.SetEnemySpawner(this);
     }
 
     private void Update()
     {
-        if (redEnemies.Count < 3) //If there are less than 3 enemies spawn more
+        if (redEnemies.Count < 3) //If there are less than 3 enemies spawn 3 more
         {
             SpawnRedEnemy();
         }
-        if (purpEnemies.Count < 2) //If there are less than 3 enemies spawn more
+        if (purpEnemies.Count < 2) //If there are less than 2 enemies spawn 2 more
         {
             SpawnPurpEnemy();
         }
@@ -56,8 +58,8 @@ public class EnemySpawner : MonoBehaviour
         {
             Vector3 spawnPosition = new Vector3(Random.Range(-9, 9), redSpawn.y, 0);
             GameObject newEnemy = Instantiate(redPrefab, spawnPosition, Quaternion.Euler(0,0,180));
-            redEnemies.Add(newEnemy);
             SpriteInfo sprite = newEnemy.GetComponent<SpriteInfo>();
+            redEnemies.Add(sprite);
             collisionManager.AddCollidable(sprite);
         }
     }
@@ -69,10 +71,21 @@ public class EnemySpawner : MonoBehaviour
         {
             Vector3 spawnPosition = new Vector3(purpSpawn.x, Random.Range(-4, 4), 0);
             GameObject newEnemy = Instantiate(purpPrefab, spawnPosition, Quaternion.Euler(0, 0, 90));
-            purpEnemies.Add(newEnemy);
             SpriteInfo sprite = newEnemy.GetComponent<SpriteInfo>();
+            purpEnemies.Add(sprite);
             collisionManager.AddCollidable(sprite);
         }
+    }
+
+    //*************FIX THIS***********************************************
+    //2 Methods to remove enemies from EnemySpawner lists
+    public void RemoveRedEnemy(SpriteInfo sprite)
+    {
+        redEnemies.Remove(sprite);
+    }
+    public void RemovePurpEnemy(SpriteInfo sprite)
+    {
+        purpEnemies.Remove(sprite);
     }
 
 

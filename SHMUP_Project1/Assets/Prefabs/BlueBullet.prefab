@@ -127,7 +127,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletInfo: {fileID: 1243417364074922797}
-  collisionManager: {fileID: 0}
 --- !u!114 &1243417364074922797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,3 +142,4 @@ MonoBehaviour:
   sRenderer: {fileID: 2316087450730887604}
   rectSize: {x: 0.3, y: 0.55}
   useRendererBounds: 1
+  spriteType: 1
