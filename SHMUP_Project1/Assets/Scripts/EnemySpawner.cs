@@ -5,145 +5,75 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
-    GameObject enemyPrefab;
+    GameObject redPrefab;
 
     [SerializeField]
-    SpriteInfo spriteInfo;
+    SpriteInfo redSpriteInfo;
+
+    [SerializeField]
+    GameObject purpPrefab;
+
+    [SerializeField]
+    SpriteInfo purpSpriteInfo;
 
     [SerializeField]
     CollisionManager collisionManager;
 
     [SerializeField]
-    List<GameObject> enemies = new List<GameObject>();
+    List<GameObject> redEnemies = new List<GameObject>();
 
-    int spawnNum = 3;
-    Vector3 spawn;
-    SpriteInfo sprite;
+    [SerializeField]
+    List<GameObject> purpEnemies = new List<GameObject>();
+
+    int redSpawnNum = 3;
+    int purpSpawnNum = 1;
+    Vector3 redSpawn;
+    Vector3 purpSpawn;
 
     private void Start()
     {
-        spawn.y = 5;
-        SpawnEnemy();
+        redSpawn.y = 5;
+        purpSpawn.x = 10.5f;
+        SpawnRedEnemy();
     }
 
     private void Update()
     {
-        if (enemies.Count < 3) // Example condition for spawning enemies
+        if (redEnemies.Count < 3) //If there are less than 3 enemies spawn more
         {
-            SpawnEnemy();
+            SpawnRedEnemy();
+        }
+        if (purpEnemies.Count < 2) //If there are less than 3 enemies spawn more
+        {
+            SpawnPurpEnemy();
         }
     }
 
-    private void SpawnEnemy()
+    //Method for spawning red enemies that fly down
+    private void SpawnRedEnemy()
     {
-        for (int i = 0; i < spawnNum; i++)
+        for (int i = 0; i < redSpawnNum; i++)
         {
-            Vector3 spawnPosition = new Vector3(Random.Range(-9, 9), spawn.y, 0);
-            GameObject newEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.Euler(0,0,180));
-            enemies.Add(newEnemy);
+            Vector3 spawnPosition = new Vector3(Random.Range(-9, 9), redSpawn.y, 0);
+            GameObject newEnemy = Instantiate(redPrefab, spawnPosition, Quaternion.Euler(0,0,180));
+            redEnemies.Add(newEnemy);
             SpriteInfo sprite = newEnemy.GetComponent<SpriteInfo>();
             collisionManager.AddCollidable(sprite);
         }
     }
 
-    //[SerializeField]
-    //GameObject enemyPrefab;
-    //
-    //[SerializeField]
-    //float spawnInterval = 3.5f;
-    //
-    //private void Start()
-    //{
-    //    StartCoroutine(spawnEnemy(spawnInterval, enemyPrefab));
-    //}
-    //
-    //private IEnumerator spawnEnemy(float interval, GameObject enemy)
-    //{
-    //    yield return new WaitForSeconds(interval);
-    //    GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-5f, 5f), Random.Range(-6f, 6f), 0), Quaternion.identity);
-    //    StartCoroutine(spawnEnemy(interval, enemy));
-    //}
+    //Method for spawning purple enemies that fly left
+    private void SpawnPurpEnemy()
+    {
+        for (int i = 0; i < purpSpawnNum; i++)
+        {
+            Vector3 spawnPosition = new Vector3(purpSpawn.x, Random.Range(-4, 4), 0);
+            GameObject newEnemy = Instantiate(purpPrefab, spawnPosition, Quaternion.Euler(0, 0, 90));
+            purpEnemies.Add(newEnemy);
+            SpriteInfo sprite = newEnemy.GetComponent<SpriteInfo>();
+            collisionManager.AddCollidable(sprite);
+        }
+    }
 
-    ////Variables
-    //[SerializeField]
-    //GameObject enemyPrefab; //Enemy    
-    //
-    //[SerializeField]
-    //float timer = 0f;   //Spawner interval
-    //
-    //[SerializeField]
-    //List<GameObject> enemies = new List<GameObject>(); //List of enemies
-    //bool isWaiting = false;
-    //
-    ////Getters and setters
-    //public List<GameObject> Enemies
-    //{
-    //    get
-    //    {
-    //        return enemies;
-    //    }
-    //    set
-    //    {
-    //        enemies = value;
-    //    }
-    //}
-    //
-    ////OnStart calls spawn once
-    //public void Start()
-    //{
-    //    Spawn();
-    //}
-    //
-    //public void Update()
-    //{
-    //    if (!isWaiting) //if is waiting is false
-    //    {
-    //        //Reset Timer
-    //        TimerReset();
-    //    }
-    //
-    //    //Decreases timer
-    //    timer -= 1 * Time.deltaTime;
-    //
-    //    //If waiting and timer is less than 0, call spawn
-    //    if (isWaiting && timer < 0f)
-    //    {
-    //        Spawn();
-    //    }
-    //}
-    //
-    ////Spawn Method
-    //public void Spawn()
-    //{
-    //    //Set isWaiting to false
-    //    isWaiting = false;
-    //
-    //    //Loop Through all old enemies and move them down
-    //    for (int i = 0; i < enemies.Count; i++)
-    //    {
-    //        //Make new x,y variables
-    //        float newY = enemies[i].transform.position.y - 2;
-    //        enemies[i].transform.position = new Vector3(enemies[i].transform.position.x, newY, enemies[i].transform.position.z);
-    //    }
-    //
-    //    //Set starting x
-    //    int x = -10;
-    //    //Loop through 11 times
-    //    for (int i = 0; i < 11; i++)
-    //    {
-    //        //Create enemy at same Y and sets X to int x then adds 2 to the value for the offset
-    //        enemies.Add(Instantiate(enemyPrefab, new Vector3(x, 4, 0), transform.rotation));
-    //        x += 2;
-    //    }
-    //}
-    //
-    ////Resets timer
-    //public void TimerReset()
-    //{
-    //    //Sets isWaiting to true and timer to 10
-    //    isWaiting = true;
-    //    timer = 10;
-    //}
-    //
-    //}
+
 }
