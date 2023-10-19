@@ -78,7 +78,7 @@ public class CollisionManager : MonoBehaviour
                 {
                     if (spriteA.spriteType == SpriteTypes.pBullet)
                     {
-                        spawner.RemoveRedEnemy(spriteB);
+                        spawner.RemoveRedEnemy(spriteB);///********************************FIX
                         RemoveCollidable(spriteB);
                         Destroy(spriteB.gameObject);
                         RemoveCollidable(spriteA);
@@ -86,7 +86,7 @@ public class CollisionManager : MonoBehaviour
                     }
                     else if (spriteB.spriteType == SpriteTypes.pBullet)
                     {
-                        spawner.RemoveRedEnemy(spriteA);
+                        spawner.RemoveRedEnemy(spriteA);///*********************************************FIX
                         RemoveCollidable(spriteA);
                         Destroy(spriteA.gameObject);
                         RemoveCollidable(spriteB);
