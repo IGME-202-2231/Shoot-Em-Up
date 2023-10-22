@@ -20,6 +20,10 @@ public class CollisionManager : MonoBehaviour
     [SerializeField]
     Lives lives;
 
+    //Create Score object
+    [SerializeField]
+    ScoreManager scoreManager;
+
     //Create reference to spawner
     public void SetEnemySpawner(EnemySpawner spawner)
     {
@@ -29,7 +33,12 @@ public class CollisionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Set player sprite to spriteType player
         collidables[0].spriteType = SpriteTypes.player;
+
+        //Get reference to ScoreManager
+        scoreManager = GetComponent<ScoreManager>();
+
     }
 
     // Update is called once per frame
@@ -89,21 +98,33 @@ public class CollisionManager : MonoBehaviour
                 {
                     if (spriteA.spriteType == SpriteTypes.pBullet)
                     {
-                        spawner.RemoveRedEnemy(spriteB);///********************************FIX
+                        //Remove enemies from enemy lists
+                        spawner.RemoveRedEnemy(spriteB);
                         spawner.RemovePurpEnemy(spriteB);
+
+                        //Remove collidables and destroy gameObjects
                         RemoveCollidable(spriteB);
                         Destroy(spriteB.gameObject);
                         RemoveCollidable(spriteA);
                         Destroy(spriteA.gameObject);
+
+                        //Increment Score
+                        scoreManager.AddScore(100);
                     }
                     else if (spriteB.spriteType == SpriteTypes.pBullet)
                     {
-                        spawner.RemoveRedEnemy(spriteA);///********************************FIX
+                        //Remove enemies from enemy lists
+                        spawner.RemoveRedEnemy(spriteA);    
                         spawner.RemovePurpEnemy(spriteA);
+
+                        //Remove collidables and destroy gameObjects
                         RemoveCollidable(spriteA);
                         Destroy(spriteA.gameObject);
                         RemoveCollidable(spriteB);
                         Destroy(spriteB.gameObject);
+
+                        //Increment Score
+                        scoreManager.AddScore(100);
                     }
                 }
                 //If player collides with eBullet, remove a life

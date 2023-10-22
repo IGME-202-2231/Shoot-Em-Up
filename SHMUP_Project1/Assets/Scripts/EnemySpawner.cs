@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
     public List<SpriteInfo> redEnemies = new List<SpriteInfo>();
     public List<SpriteInfo> purpEnemies = new List<SpriteInfo>();
 
-    int redSpawnNum = 3;
+    int redSpawnNum = 5;
     int purpSpawnNum = 2;
     Vector3 redSpawn;
     Vector3 purpSpawn;
@@ -41,7 +41,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        if (redEnemies.Count < 3) //If there are less than 3 enemies spawn 3 more
+        if (redEnemies.Count < 3) //If there are less than 3 enemies spawn 5 more
         {
             SpawnRedEnemy();
         }
