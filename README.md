@@ -11,9 +11,9 @@
 
 -   Camera Orientation: Top-Down
 -   Camera Movement: The camera remains static
--   Player Health: I will implement a health bar
--   End Condition: Game will be survival/round based
--   Scoring: Score is based on kills, kill count will be displayed next to health bar UI
+-   Player Health: Player gets 3 lives (Displayed in bottom left corner
+-   End Condition: Game will be survival/round based. If player loses 3 lives, game ends
+-   Scoring: Score is based on kills, 100 points per kill. Score is displayed in top left corner
 
 ### Game Description
 
@@ -22,27 +22,24 @@ Survive wave after wave fending off hordes of enemies and projectiles!
 ### Controls
 
 -   Movement
-    -   Up: 
-    -   Down: 
-    -   Left: 
-    -   Right: 
--   Fire: 
+    -   Up: W / Up Arrow
+    -   Down: S / Down Arrow
+    -   Left: A / Left Arrow
+    -   Right: D / Right Arrow
+-   Fire: Space
 
 ## You Additions
-
-_List out what you added to your game to make it different for you_
 I will create the assets for the game including player ship, projectiles, and enemies
 
 ## Sources
 
--   _List all project sources here –models, textures, sound clips, assets, etc._
--   _If an asset is from the Unity store, include a link to the page and the author’s name_
+- All assets were drawn by me.
 
 ## Known Issues
 
-_List any errors, lack of error checking, or specific information that I need to know to run your program_
+No Known errors in game
 
 ### Requirements not completed
 
-_If you did not complete a project requirement, notate that here_
+I utilized RigidBodies for player and enemy firing rather than vector based movement
 
